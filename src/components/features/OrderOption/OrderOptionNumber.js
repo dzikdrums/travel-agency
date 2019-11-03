@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './OrderOption.scss';
+import PropTypes from 'prop-types';
 
 const OrderOptionNumber = ({ setOptionValue, currentValue, limits }) => (
   <div className={styles.number}>
@@ -13,5 +14,13 @@ const OrderOptionNumber = ({ setOptionValue, currentValue, limits }) => (
     />
   </div>
 );
+
+OrderOptionNumber.propTypes = {
+  setOptionValue: PropTypes.func,
+  currentValue: PropTypes.number,
+  limits: PropTypes.object,
+  //   limits.max: PropTypes.number,
+  //   limits.min: PropTypes.number,
+};
 
 export default OrderOptionNumber;

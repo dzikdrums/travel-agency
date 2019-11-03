@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './OrderOption.scss';
+import PropTypes from 'prop-types';
 
 let currentValue = [];
 
@@ -34,4 +35,10 @@ const OrderOptionCheckboxes = ({ setOptionValue, values }) => (
     ))}
   </div>
 );
+
+OrderOptionCheckboxes.propTypes = {
+  values: PropTypes.array,
+  setOptionValue: PropTypes.func,
+};
+
 export default OrderOptionCheckboxes;
