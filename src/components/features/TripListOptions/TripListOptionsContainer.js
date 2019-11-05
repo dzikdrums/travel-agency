@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   // TODO - add more dispatchers for other filters
   addTags: tag => dispatch(addTags(tag)),
   removeTags: tag => dispatch(removeTags(tag)),
-  changeDuration: (type, value) => dispatch(changeDuration(type, value)),
+  changeDuration: (frame, value) => dispatch(changeDuration(frame, value)),
 });
 
 export default connect(

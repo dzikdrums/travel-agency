@@ -20,7 +20,11 @@ export const changeSearchPhrase = payload => ({ payload, type: CHANGE_PHRASE });
 // TODO - add other action creators
 export const addTags = payload => ({ payload, type: ADD_TAGS });
 export const removeTags = payload => ({ payload, type: REMOVE_TAGS });
-export const changeDuration = payload => ({ payload, type: CHANGE_DURATION });
+export const changeDuration = (frame, value) => ({
+  frame,
+  value,
+  type: CHANGE_DURATION,
+});
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
@@ -44,7 +48,10 @@ export default function reducer(statePart = [], action = {}) {
     case CHANGE_DURATION:
       return {
         ...statePart,
-        duration: action.payload,
+        duration: {
+          ...statePart.duration,
+          [action.frame]: parseInt(action.value),
+        },
       };
     default:
       return statePart;
