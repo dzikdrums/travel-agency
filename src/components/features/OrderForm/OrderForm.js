@@ -8,6 +8,7 @@ import settings from '../../../data/settings';
 import Button from '../../common/Button/Button';
 import { formatPrice } from '../../../utils/formatPrice';
 import { calculateTotal } from '../../../utils/calculateTotal';
+import styles from './OrderForm.scss';
 
 const sendOrder = (options, tripCost, tripId, tripName, countryCode) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
@@ -42,7 +43,7 @@ const sendOrder = (options, tripCost, tripId, tripName, countryCode) => {
 
 const OrderForm = props => (
   <Row>
-    <form>
+    <form className={styles.form}>
       {pricing.map(priceData => (
         <Col key={priceData.id} md={4}>
           <OrderOption
