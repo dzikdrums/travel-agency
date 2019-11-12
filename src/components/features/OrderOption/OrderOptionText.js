@@ -8,6 +8,7 @@ const OrderOptionText = ({ setOptionValue }) => (
       onChange={event => setOptionValue(event.currentTarget.value)}
       className={styles.inputSmall}
       type="text"
+      required
     />
   </div>
 );
