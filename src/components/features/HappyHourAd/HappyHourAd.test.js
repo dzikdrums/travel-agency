@@ -9,9 +9,14 @@ const select = {
 };
 
 const mockProps = {
-  title: 'HappyAd',
+  title: 'HappyHour',
   promoDescription: 'promoDescription',
 };
+
+beforeAll(() => {
+  const utilsModule = jest.requireActual('../../../utils/formatTime.js');
+  utilsModule.formatTime = jest.fn(seconds => seconds);
+});
 
 describe('Component HappyHourAd', () => {
   it('should render without crashing', () => {
