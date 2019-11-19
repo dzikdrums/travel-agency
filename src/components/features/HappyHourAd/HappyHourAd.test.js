@@ -36,7 +36,6 @@ describe('Component HappyHourAd', () => {
 });
 
 const trueDate = Date;
-
 const mockDate = customDate =>
   class extends Date {
     constructor(...args) {
