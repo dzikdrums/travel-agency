@@ -70,27 +70,3 @@ describe('Component DaysToSummer with mocked Date', () => {
   checkDescriptionInSummer('07-10', '');
   checkDescriptionInSummer('09-23', '');
 });
-
-// const checkDescriptionAfterTime = (date, delayDays, expectedDescription) => {
-//   it(`should show correct value ${delayDays} days after ${date}`, () => {
-//     jest.useFakeTimers();
-//     global.Date = mockDate(`2019-${date}T12:0:0:0.135Z`);
-
-//     const component = shallow(<DaysToSummer />);
-//     const newTime = new Date();
-//     newTime.setDate(newTime.getDate() + delayDays);
-//     global.Date = mockDate(newTime.getTime());
-
-//     jest.advanceTimersByTime(delayDays * (1000 * 60 * 60 * 24));
-
-//     const renderedTime = component.find(select.title).text();
-//     expect(renderedTime).toEqual(date.toString());
-
-//     global.Date = trueDate;
-//     jest.useRealTimers();
-//   });
-// };
-
-// describe('Component DaysToSummer with mocked Date and delay', () => {
-//   checkDescriptionAfterTime('05-14', 2, 'ddnpm ');
-// });

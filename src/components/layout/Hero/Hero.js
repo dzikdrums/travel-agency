@@ -3,6 +3,7 @@ import styles from './Hero.scss';
 import PropTypes from 'prop-types';
 import HappyHourAd from '../../features/HappyHourAd/HappyHourAd';
 import DaysToSummer from '../../features/DaysToSummer/DaysToSummer';
+import TelephoneNumber from '../../features/TelephoneNumber/TelephoneNumber';
 
 const Hero = ({ variant = '', titleText, imageSrc, ...otherProps }) => (
   <div
@@ -15,6 +16,9 @@ const Hero = ({ variant = '', titleText, imageSrc, ...otherProps }) => (
         .join('')
     }
   >
+    <div className={styles.telephoneNumber}>
+      <TelephoneNumber />
+    </div>
     <div className={styles.daysToSummer}>
       <DaysToSummer />
     </div>

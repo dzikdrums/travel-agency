@@ -20,8 +20,8 @@ describe('Component TripSummary', () => {
   });
   it('should render correct name, cost and days', () => {
     const expectedName = 'Rafal';
-    const cost = '400';
-    const expectedCost = 'from 400';
+    const cost = '$400';
+    const expectedCost = 'from $320';
     const days = 7;
     const expectedDays = '7 days';
     const component = shallow(

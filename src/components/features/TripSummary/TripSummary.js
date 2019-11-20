@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import styles from './TripSummary.scss';
 import { Col } from 'react-flexbox-grid';
+import { PromoPrice } from '../../../utils/PromoPrice';
+import { formatPrice } from '../../../utils/formatPrice';
 
 const TripSummary = ({ id, image, name, cost, days, tags }) => (
   <Col xs={12} sm={6} lg={4} className={styles.column}>
@@ -12,7 +14,11 @@ const TripSummary = ({ id, image, name, cost, days, tags }) => (
         <h3 className={styles.title}>{name}</h3>
         <div className={styles.details}>
           <span className={styles.days}>{days} days</span>
-          <span className={styles.cost}>from {cost}</span>
+          <span className={styles.cost}>
+            from {formatPrice(PromoPrice(cost))}
+          </span>
+          {console.log(cost)}
+          {console.log(formatPrice(PromoPrice(cost)))}
         </div>
         {tags.length > 0 ? (
           <div className={styles.tags}>
