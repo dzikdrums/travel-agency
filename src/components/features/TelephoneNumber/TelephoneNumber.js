@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './TelephoneNumber.scss';
-import { formatTime } from '../../../utils/formatTime';
 
 class TelephoneNumber extends React.Component {
   constructor() {
@@ -10,14 +9,31 @@ class TelephoneNumber extends React.Component {
     }, 1000);
   }
 
-  mockProps = {
-    title: 'HappyHour',
-    promoDescription: 'promoDescription',
-  };
-
   getCountdownTime() {
     const currentTime = new Date();
-    const nextNoon = new Date(
+    const officeClose = new Date(
+      Date.UTC(
+        currentTime.getUTCFullYear(),
+        currentTime.getUTCMonth(),
+        currentTime.getUTCDate(),
+        22,
+        0,
+        0,
+        0,
+      ),
+    );
+    const amandaShift = new Date(
+      Date.UTC(
+        currentTime.getUTCFullYear(),
+        currentTime.getUTCMonth(),
+        currentTime.getUTCDate(),
+        8,
+        0,
+        0,
+        0,
+      ),
+    );
+    const tobiasShift = new Date(
       Date.UTC(
         currentTime.getUTCFullYear(),
         currentTime.getUTCMonth(),
@@ -28,23 +44,45 @@ class TelephoneNumber extends React.Component {
         0,
       ),
     );
+    const helenaShift = new Date(
+      Date.UTC(
+        currentTime.getUTCFullYear(),
+        currentTime.getUTCMonth(),
+        currentTime.getUTCDate(),
+        16,
+        0,
+        0,
+        0,
+      ),
+    );
 
-    if (currentTime.getUTCHours() >= 12) {
-      nextNoon.setUTCDate(currentTime.getUTCDate() + 1);
+    if (
+      currentTime.getTime() > amandaShift.getTime() &&
+      currentTime.getTime() < tobiasShift.getTime()
+    ) {
+      return `Amanda, 678.243.8455`;
+    } else if (
+      currentTime.getTime() > tobiasShift.getTime() &&
+      currentTime.getTime() < helenaShift.getTime()
+    ) {
+      return 'Tobias, 278.443.6443';
+    } else if (
+      currentTime.getTime() > helenaShift.getTime() &&
+      currentTime.getTime() < officeClose.getTime()
+    ) {
+      return 'Helena, 167.280.3970';
+    } else {
+      return 'Office closed';
     }
-
-    return Math.round((nextNoon.getTime() - currentTime.getTime()) / 1000);
   }
 
   render() {
     return (
       <div className={styles.component}>
-        <h3 className={styles.title}>{this.mockProps.title}</h3>
-        <div className={styles.promoDescription}>
-          {this.getCountdownTime() <= 82800
-            ? formatTime(this.getCountdownTime())
-            : this.mockProps.promoDescription}
-        </div>
+        {this.getCountdownTime() === 'Office closed' ? null : (
+          <h3 className={styles.title}>Please contact us at:</h3>
+        )}
+        <div className={styles.promoDescription}>{this.getCountdownTime()}</div>
       </div>
     );
   }
